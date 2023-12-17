@@ -1,14 +1,10 @@
 package org.isetn.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -36,6 +32,13 @@ public class Etudiant {
     
     @ManyToOne
 	private Classe classe;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "etudiant", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private List<Abscence> abscences = new ArrayList<>();
+
+
+
 	
 	
 }

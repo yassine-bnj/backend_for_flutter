@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -26,6 +27,12 @@ public class Matiere {
 	@OneToMany(mappedBy = "matiere", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 //	@JsonIgnore
 	private List<ClasseMatiere> classeMatieres;
+
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "matiere")
+	private List<Abscence> abscences=new ArrayList<>();
+
 
 	
 	

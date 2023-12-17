@@ -56,6 +56,8 @@ public class EtudiantController {
 	
 	@PutMapping("/update")
 	public Etudiant update(@RequestBody Etudiant etudiant) {
+		System.out.print(etudiant.toString());
 		return etudiantRepository.save(etudiant);
+		//return etudiant;
 	}
 }
